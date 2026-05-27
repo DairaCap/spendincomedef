@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Ticket Details - Finance Cockpit</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Shared Components Logic & Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-secondary-fixed-variant": "#6700b5",
+                "surface-container-highest": "#32353b",
+                "primary-container": "#ff00ff",
+                "on-primary-fixed-variant": "#810081",
+                "on-secondary-fixed": "#2c0051",
+                "surface-container-high": "#272a30",
+                "primary-fixed": "#ffd7f5",
+                "primary": "#ffabf3",
+                "on-secondary-container": "#dcb7ff",
+                "on-secondary": "#480081",
+                "error": "#ffb4ab",
+                "error-container": "#93000a",
+                "inverse-surface": "#e1e2ea",
+                "on-primary-container": "#510051",
+                "on-primary": "#5b005b",
+                "inverse-primary": "#a900a9",
+                "secondary-fixed-dim": "#dcb8ff",
+                "inverse-on-surface": "#2d3037",
+                "on-surface-variant": "#dcbed4",
+                "tertiary-fixed": "#ffdcc3",
+                "tertiary-container": "#db7800",
+                "on-tertiary-container": "#452100",
+                "outline-variant": "#564052",
+                "surface-container": "#1d2026",
+                "on-primary-fixed": "#380038",
+                "surface-container-low": "#191c22",
+                "on-error": "#690005",
+                "background": "#101319",
+                "secondary-fixed": "#efdbff",
+                "surface-tint": "#ffabf3",
+                "primary-fixed-dim": "#ffabf3",
+                "tertiary-fixed-dim": "#ffb77d",
+                "tertiary": "#ffb77d",
+                "on-surface": "#e1e2ea",
+                "on-error-container": "#ffdad6",
+                "secondary": "#dcb8ff",
+                "on-tertiary-fixed-variant": "#6e3900",
+                "surface-dim": "#101319",
+                "surface": "#101319",
+                "on-tertiary": "#4d2600",
+                "surface-container-lowest": "#0b0e14",
+                "on-background": "#e1e2ea",
+                "secondary-container": "#7701d0",
+                "outline": "#a4899d",
+                "surface-bright": "#363940",
+                "on-tertiary-fixed": "#2f1500",
+                "surface-variant": "#32353b"
+            },
+            "borderRadius": {
+                "DEFAULT": "1rem",
+                "lg": "2rem",
+                "xl": "3rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "grid-columns-desktop": "12",
+                "section-gap": "32px",
+                "grid-columns-mobile": "4",
+                "container-margin": "20px",
+                "stack-gap": "16px"
+            },
+            "fontFamily": {
+                "body-lg": ["Inter"],
+                "label-caps": ["Inter"],
+                "title-md": ["Inter"],
+                "headline-lg-mobile": ["Inter"],
+                "display-lg": ["Inter"],
+                "headline-lg": ["Inter"],
+                "body-sm": ["Inter"]
+            },
+            "fontSize": {
+                "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "500"}],
+                "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tap-highlight-none {
+            -webkit-tap-highlight-color: transparent;
+        }
+        .glass-panel {
+            background: rgba(26, 29, 35, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .neon-glow {
+            filter: drop-shadow(0 0 8px rgba(255, 171, 243, 0.4));
+        }
+        .chart-container {
+            position: relative;
+            width: 140px;
+            height: 140px;
+        }
+        .chart-svg {
+            transform: rotate(-90deg);
+        }
+        @keyframes stroke-in {
+            from { stroke-dasharray: 0 100; }
+        }
+        .animate-stroke {
+            animation: stroke-in 1s ease-out forwards;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-lg antialiased min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 bg-background flex justify-between items-center px-container-margin py-4">
+<div class="flex items-center gap-3">
+<button class="tap-highlight-none active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-title-md text-title-md text-primary">Ticket Details</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="tap-highlight-none active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary">share</span>
+</button>
+<button class="tap-highlight-none active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary">settings</span>
+</button>
+</div>
+</header>
+<main class="flex-1 px-container-margin pb-32">
+<!-- Hero Section: Total & Summary -->
+<section class="mt-4 mb-section-gap">
+<div class="bg-surface-container-low rounded-lg p-6 shadow-[0px_20px_40px_rgba(0,0,0,0.4)] relative overflow-hidden">
+<!-- Background Decorative Accent -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/10 blur-[60px] rounded-full -mr-16 -mt-16"></div>
+<div class="flex justify-between items-center relative z-10">
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-1">TOTAL SPENT</p>
+<h2 class="font-display-lg text-display-lg text-primary neon-glow">$85.50</h2>
+<p class="font-body-sm text-body-sm text-outline mt-1">Oct 24, 2023 • Whole Foods Market</p>
+</div>
+<!-- Modern Pie Chart (Simplified SVG) -->
+<div class="chart-container">
+<svg class="chart-svg w-full h-full" viewbox="0 0 36 36">
+<!-- Background Circle -->
+<circle cx="18" cy="18" fill="none" r="15.915" stroke="#272a30" stroke-width="3"></circle>
+<!-- Groceries: 70% (Magenta) -->
+<circle class="animate-stroke" cx="18" cy="18" fill="none" r="15.915" stroke="#ffabf3" stroke-dasharray="70 30" stroke-width="3"></circle>
+<!-- Drinks: 30% (Violet) -->
+<circle class="animate-stroke" cx="18" cy="18" fill="none" r="15.915" stroke="#dcb8ff" stroke-dasharray="30 100" stroke-dashoffset="-70" stroke-width="3"></circle>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center flex-col">
+<span class="font-label-caps text-[10px] text-on-surface-variant">BREAKDOWN</span>
+</div>
+</div>
+</div>
+<!-- Category Legend -->
+<div class="flex gap-4 mt-6">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<span class="font-body-sm text-body-sm text-on-surface">Groceries 70%</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<span class="font-body-sm text-body-sm text-on-surface">Drinks 30%</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Purchased Products Section -->
+<section class="flex flex-col gap-stack-gap">
+<h3 class="font-title-md text-title-md text-on-surface ml-1">Purchased Products</h3>
+<div class="flex flex-col gap-3">
+<!-- Item 1 -->
+<div class="bg-surface-container rounded-lg p-4 flex items-center justify-between hover:bg-surface-container-high transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">egg</span>
+</div>
+<div>
+<p class="font-body-lg text-body-lg text-on-surface">Organic Whole Milk</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Dairy • 1 gal</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-title-md text-title-md text-primary">$4.50</p>
+<p class="font-label-caps text-[10px] text-outline">GROCERIES</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="bg-surface-container rounded-lg p-4 flex items-center justify-between hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">bakery_dining</span>
+</div>
+<div>
+<p class="font-body-lg text-body-lg text-on-surface">Sourdough Bread</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Bakery • 1 unit</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-title-md text-title-md text-primary">$2.00</p>
+<p class="font-label-caps text-[10px] text-outline">GROCERIES</p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="bg-surface-container rounded-lg p-4 flex items-center justify-between hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">coffee</span>
+</div>
+<div>
+<p class="font-body-lg text-body-lg text-on-surface">Cold Brew Coffee</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Drinks • 32 oz</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-title-md text-title-md text-secondary">$12.00</p>
+<p class="font-label-caps text-[10px] text-outline">DRINKS</p>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="bg-surface-container rounded-lg p-4 flex items-center justify-between hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">nutrition</span>
+</div>
+<div>
+<p class="font-body-lg text-body-lg text-on-surface">Avocados (3pk)</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Produce • Fresh</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-title-md text-title-md text-primary">$6.50</p>
+<p class="font-label-caps text-[10px] text-outline">GROCERIES</p>
+</div>
+</div>
+<!-- Item 5 -->
+<div class="bg-surface-container rounded-lg p-4 flex items-center justify-between hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">local_bar</span>
+</div>
+<div>
+<p class="font-body-lg text-body-lg text-on-surface">Kombucha Rose</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Drinks • 12 oz</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-title-md text-title-md text-secondary">$5.50</p>
+<p class="font-label-caps text-[10px] text-outline">DRINKS</p>
+</div>
+</div>
+</div>
+<!-- Transaction Metadata -->
+<div class="mt-4 p-4 border-t border-outline-variant/30 flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Payment Method</span>
+<span class="font-body-sm text-body-sm text-on-surface">Apple Pay •••• 4242</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Tax (8.25%)</span>
+<span class="font-body-sm text-body-sm text-on-surface">$6.50</span>
+</div>
+<div class="flex justify-between items-center mt-2 pt-2 border-t border-outline-variant/10">
+<span class="font-body-lg text-body-lg font-bold text-on-surface">Total Amount</span>
+<span class="font-title-md text-title-md text-primary font-bold">$85.50</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-surface/80 dark:bg-surface/80 backdrop-blur-xl shadow-[0px_-20px_40px_rgba(0,0,0,0.4)] rounded-t-lg">
+<button class="flex flex-col items-center justify-center text-outline-variant hover:text-primary-fixed transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined">grid_view</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline-variant hover:text-primary-fixed transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined">contactless_off</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline-variant hover:text-primary-fixed transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined">home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary relative after:content-[''] after:absolute after:-bottom-1 after:w-1 after:h-1 after:bg-primary after:rounded-full active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined">receipt_long</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline-variant hover:text-primary-fixed transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined">calendar_today</span>
+</button>
+</nav>
+<script>
+        // Simple micro-interaction for item highlights
+        document.querySelectorAll('.bg-surface-container').forEach(card => {
+            card.addEventListener('touchstart', () => {
+                card.style.transform = 'scale(0.98)';
+            });
+            card.addEventListener('touchend', () => {
+                card.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body></html>

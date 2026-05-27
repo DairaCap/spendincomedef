@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Contacts &amp; Cards</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tap-highlight-none {
+            -webkit-tap-highlight-color: transparent;
+        }
+        .glass-card {
+            background: rgba(26, 29, 35, 0.6);
+            backdrop-filter: blur(12px);
+        }
+        .card-gradient-magenta {
+            background: linear-gradient(135deg, #ff00ff 0%, #7701d0 100%);
+        }
+        .card-gradient-violet {
+            background: linear-gradient(135deg, #7701d0 0%, #2c0051 100%);
+        }
+        .card-gradient-dark {
+            background: linear-gradient(135deg, #272a30 0%, #0b0e14 100%);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#6700b5",
+                        "surface-container-highest": "#32353b",
+                        "primary-container": "#ff00ff",
+                        "on-primary-fixed-variant": "#810081",
+                        "on-secondary-fixed": "#2c0051",
+                        "surface-container-high": "#272a30",
+                        "primary-fixed": "#ffd7f5",
+                        "primary": "#ffabf3",
+                        "on-secondary-container": "#dcb7ff",
+                        "on-secondary": "#480081",
+                        "error": "#ffb4ab",
+                        "error-container": "#93000a",
+                        "inverse-surface": "#e1e2ea",
+                        "on-primary-container": "#510051",
+                        "on-primary": "#5b005b",
+                        "inverse-primary": "#a900a9",
+                        "secondary-fixed-dim": "#dcb8ff",
+                        "inverse-on-surface": "#2d3037",
+                        "on-surface-variant": "#dcbed4",
+                        "tertiary-fixed": "#ffdcc3",
+                        "tertiary-container": "#db7800",
+                        "on-tertiary-container": "#452100",
+                        "outline-variant": "#564052",
+                        "surface-container": "#1d2026",
+                        "on-primary-fixed": "#380038",
+                        "surface-container-low": "#191c22",
+                        "on-error": "#690005",
+                        "background": "#101319",
+                        "secondary-fixed": "#efdbff",
+                        "surface-tint": "#ffabf3",
+                        "primary-fixed-dim": "#ffabf3",
+                        "tertiary-fixed-dim": "#ffb77d",
+                        "tertiary": "#ffb77d",
+                        "on-surface": "#e1e2ea",
+                        "on-error-container": "#ffdad6",
+                        "secondary": "#dcb8ff",
+                        "on-tertiary-fixed-variant": "#6e3900",
+                        "surface-dim": "#101319",
+                        "surface": "#101319",
+                        "on-tertiary": "#4d2600",
+                        "surface-container-lowest": "#0b0e14",
+                        "on-background": "#e1e2ea",
+                        "secondary-container": "#7701d0",
+                        "outline": "#a4899d",
+                        "surface-bright": "#363940",
+                        "on-tertiary-fixed": "#2f1500",
+                        "surface-variant": "#32353b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "grid-columns-desktop": "12",
+                        "section-gap": "32px",
+                        "grid-columns-mobile": "4",
+                        "container-margin": "20px",
+                        "stack-gap": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "title-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-lg min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-background z-40 flex justify-between items-center px-container-margin py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container">
+<img alt="User" class="w-full h-auto" data-alt="A high-end studio portrait of a young professional with short dark hair, wearing a sleek black turtleneck. The lighting is dramatic and cinematic, with a soft neon magenta rim light that separates the subject from the deep, dark background. The aesthetic is polished, futuristic, and perfectly aligned with a luxury fintech interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGKiQDpNcuAkmbRaDSIEbpdcf_MfHPhH3F4jn3wF0lIrfsusSk5JHinJIRIGdEe21ua4Em3S0buQrM_r4icSAQBPeTSiVdS-VXgKuhDxs-DEQkzmRyAtRlHHRV3ZM-RKqTamU7Ay9vk1VZbfs_JmeP71GgkadJQ9-bJ4ug-ats7_m6eHSKM_JSeRIUwJWdJcENj-QEdtP1FDOtPEXuyOrw6VymYClVAJ-gDCCYGQUxHBQbCujZeLRtpM_nXznxmNg7Z_9Z9KwvyTU"/>
+</div>
+<h1 class="font-title-md text-title-md text-primary">Welcome, Alex</h1>
+</div>
+<button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform tap-highlight-none">
+            settings
+        </button>
+</header>
+<main class="px-container-margin space-y-section-gap mt-4">
+<!-- Cards Section -->
+<section>
+<div class="flex justify-between items-end mb-4">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-on-background">Your Cards</h2>
+<button class="text-primary font-label-caps text-label-caps uppercase hover:opacity-80">Add New</button>
+</div>
+<div class="flex overflow-x-auto pb-4 -mx-container-margin px-container-margin gap-stack-gap snap-x scrollbar-hide">
+<!-- Card 1 -->
+<div class="min-w-[280px] h-[180px] card-gradient-magenta rounded-lg p-6 flex flex-col justify-between shadow-[0px_20px_40px_rgba(0,0,0,0.4)] snap-center">
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-label-caps text-white/90">Premium Black</span>
+<div class="w-10 h-6 bg-white/20 rounded-sm backdrop-blur-md"></div>
+</div>
+<div class="space-y-1">
+<p class="font-title-md text-title-md text-white tracking-widest">•••• •••• •••• 8842</p>
+<div class="flex justify-between items-end">
+<div>
+<p class="text-[10px] uppercase text-white/60 font-bold">Card Holder</p>
+<p class="font-body-sm text-body-sm text-white">ALEX RIVERA</p>
+</div>
+<img alt="Visa" class="h-4 opacity-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAM8MRlJwyn3AyI8DsD4qAV92PvN-q2k3kUYGmxiXUBDL5gwOULB8wpw4JvMNR2iVOZ11qYQoNJylGkweswovopDqQjYR-g9r-CynJrJNt38meLFMi84gsZRc_5GSx3KdJcy0VsrKSonzM2sQpqYwRvgho30MjoOkNRMZxPg_faTIDlP2xY1xQoTuiSCtWXk-0rz_XcTTCpnwiPCPJqPL5qkdrDFhHIrMx8ZNHVXwbveyUEhDsVR-RGSDfStrNsFipl4XwMfCvtjqw"/>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="min-w-[280px] h-[180px] card-gradient-violet rounded-lg p-6 flex flex-col justify-between shadow-[0px_20px_40px_rgba(0,0,0,0.4)] snap-center">
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-label-caps text-white/90">Global Wallet</span>
+<div class="w-10 h-6 bg-white/20 rounded-sm backdrop-blur-md"></div>
+</div>
+<div class="space-y-1">
+<p class="font-title-md text-title-md text-white tracking-widest">•••• •••• •••• 1055</p>
+<div class="flex justify-between items-end">
+<div>
+<p class="text-[10px] uppercase text-white/60 font-bold">Card Holder</p>
+<p class="font-body-sm text-body-sm text-white">ALEX RIVERA</p>
+</div>
+<img alt="Mastercard" class="h-6 opacity-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDV2oHKyI96Kkbhx-Bl9-asv81gRjXqex3CLh230-fAt7D9ouEGcLXADG_Gn4fgPV3xb4T9FxbBSOAoHlqb-j0RvtZhrzvqeAfpBDmtjr50qBbKkXpeWUyo9sua3o7RhqCH3UmN5vbJ5VpWa4BiXQWoKkXNbd2fuEHAXWXFMkUYHLmI6hdMHcLwASvIkMtOP6s1wpUMknisM0tYvACzTAE5LMlj2cQq7FpTABkRUDDGXTrZEm0jAOb5mZlgNSlmQYCDWC90lClyDqQ"/>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="min-w-[280px] h-[180px] card-gradient-dark rounded-lg p-6 flex flex-col justify-between shadow-[0px_20px_40px_rgba(0,0,0,0.4)] snap-center">
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-label-caps text-white/90">Business Debit</span>
+<div class="w-10 h-6 bg-white/20 rounded-sm backdrop-blur-md"></div>
+</div>
+<div class="space-y-1">
+<p class="font-title-md text-title-md text-white tracking-widest">•••• •••• •••• 4490</p>
+<div class="flex justify-between items-end">
+<div>
+<p class="text-[10px] uppercase text-white/60 font-bold">Card Holder</p>
+<p class="font-body-sm text-body-sm text-white">ALEX RIVERA</p>
+</div>
+<img alt="Visa" class="h-4 opacity-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyQUD4e-SZATxAdX5GIbz69VchzKMIJdxHbLA7n1vGW0pz4cVxLU-3nnPSoqIxyjvrQKYj3KJkzEGXCKFWjwfDAF7jL_ymgSD4Um-JzDto_-X3-ArNxLi_z6GACuPtednz9xoYQdQLgMyDWH_Zlw7XzpCKSaofWzERiSum1lVIEcIdjDtWfxWmtHZd2mxgMxChq86PG1-UVT9uXdAwUGvA4WwBGnffMZCTt9DM5u-9-GCirz0PyvGJ7_lMJ5qU9TrwtMeLo96toGM"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contacts Section -->
+<section class="space-y-4">
+<div class="flex justify-between items-center">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-on-background">Saved Contacts</h2>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
+<input class="bg-surface-container-low border-none rounded-full pl-10 pr-4 py-2 text-body-sm focus:ring-1 focus:ring-primary w-32 transition-all duration-300 focus:w-48" placeholder="Search..." type="text"/>
+</div>
+</div>
+<div class="bg-surface-container rounded-lg p-4 space-y-stack-gap">
+<!-- Contact Item -->
+<div class="flex items-center justify-between p-2 hover:bg-surface-container-high rounded-lg transition-colors cursor-pointer group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-bold text-title-md">
+                            JD
+                        </div>
+<div>
+<p class="font-body-lg text-body-lg text-on-background group-hover:text-primary transition-colors">Jordan Duarte</p>
+<p class="font-body-sm text-body-sm text-outline">NuBank • CLABE: 012 345 6789</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+<!-- Contact Item -->
+<div class="flex items-center justify-between p-2 hover:bg-surface-container-high rounded-lg transition-colors cursor-pointer group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-tertiary-container flex items-center justify-center text-on-tertiary-container font-bold text-title-md">
+                            MS
+                        </div>
+<div>
+<p class="font-body-lg text-body-lg text-on-background group-hover:text-primary transition-colors">Mariana Silva</p>
+<p class="font-body-sm text-body-sm text-outline">BBVA • CLABE: 072 901 2345</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+<!-- Contact Item -->
+<div class="flex items-center justify-between p-2 hover:bg-surface-container-high rounded-lg transition-colors cursor-pointer group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-title-md">
+                            EK
+                        </div>
+<div>
+<p class="font-body-lg text-body-lg text-on-background group-hover:text-primary transition-colors">Erik Kincaid</p>
+<p class="font-body-sm text-body-sm text-outline">HSBC • CLABE: 021 556 7781</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+<!-- Contact Item -->
+<div class="flex items-center justify-between p-2 hover:bg-surface-container-high rounded-lg transition-colors cursor-pointer group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface font-bold text-title-md">
+                            LC
+                        </div>
+<div>
+<p class="font-body-lg text-body-lg text-on-background group-hover:text-primary transition-colors">Lucia Castro</p>
+<p class="font-body-sm text-body-sm text-outline">Santander • CLABE: 014 223 9901</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- Quick Actions Bento -->
+<section class="grid grid-cols-2 gap-4 pb-8">
+<div class="bg-surface-container p-6 rounded-lg flex flex-col justify-between h-40 hover:bg-surface-container-high transition-all active:scale-95 cursor-pointer">
+<span class="material-symbols-outlined text-primary text-3xl">qr_code_scanner</span>
+<p class="font-title-md text-title-md">Scan to Pay</p>
+</div>
+<div class="bg-surface-container-high p-6 rounded-lg flex flex-col justify-between h-40 hover:bg-surface-container-highest transition-all active:scale-95 cursor-pointer">
+<span class="material-symbols-outlined text-tertiary text-3xl">send_money</span>
+<p class="font-title-md text-title-md">Transfer</p>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-surface/80 dark:bg-surface/80 backdrop-blur-xl shadow-[0px_-20px_40px_rgba(0,0,0,0.4)] rounded-t-lg">
+<a class="flex flex-col items-center justify-center text-outline-variant hover:text-primary-fixed transition-colors active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline-variant hover:text-primary-fixed transition-colors active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">contactless_off</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline-variant hover:text-primary-fixed transition-colors active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary relative after:content-[''] after:absolute after:-bottom-1 after:w-1 after:h-1 after:bg-primary after:rounded-full active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline-variant hover:text-primary-fixed transition-colors active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for horizontal scroll
+        const scrollContainer = document.querySelector('.overflow-x-auto');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        scrollContainer.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - scrollContainer.offsetLeft;
+            scrollLeft = scrollContainer.scrollLeft;
+        });
+        scrollContainer.addEventListener('mouseleave', () => {
+            isDown = false;
+        });
+        scrollContainer.addEventListener('mouseup', () => {
+            isDown = false;
+        });
+        scrollContainer.addEventListener('mousemove', (e) => {
+            if(!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - scrollContainer.offsetLeft;
+            const walk = (x - startX) * 2;
+            scrollContainer.scrollLeft = scrollLeft - walk;
+        });
+
+        // Interactive effect for contacts
+        document.querySelectorAll('.group').forEach(item => {
+            item.addEventListener('click', () => {
+                item.style.backgroundColor = 'var(--surface-container-highest)';
+                setTimeout(() => {
+                    item.style.backgroundColor = '';
+                }, 150);
+            });
+        });
+    </script>
+</body></html>

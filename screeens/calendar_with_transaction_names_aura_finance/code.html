@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        :root {
+            --mat-icon-weight: 200;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'wght' 200, 'FILL' 0;
+            user-select: none;
+        }
+        .active-icon {
+            font-variation-settings: 'wght' 400, 'FILL' 1;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #101319;
+            color: #e1e2ea;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .glass-card {
+            background: #1A1D23;
+            box-shadow: 0px 20px 40px rgba(0,0,0,0.4);
+        }
+        .neon-glow-primary {
+            box-shadow: 0 0 12px rgba(255, 171, 243, 0.4);
+        }
+        .neon-glow-secondary {
+            box-shadow: 0 0 12px rgba(220, 184, 255, 0.4);
+        }
+        .hide-pending .pending-indicator {
+            display: none;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#6700b5",
+                        "surface-container-highest": "#32353b",
+                        "primary-container": "#ff00ff",
+                        "on-primary-fixed-variant": "#810081",
+                        "on-secondary-fixed": "#2c0051",
+                        "surface-container-high": "#272a30",
+                        "primary-fixed": "#ffd7f5",
+                        "primary": "#ffabf3",
+                        "on-secondary-container": "#dcb7ff",
+                        "on-secondary": "#480081",
+                        "error": "#ffb4ab",
+                        "error-container": "#93000a",
+                        "inverse-surface": "#e1e2ea",
+                        "on-primary-container": "#510051",
+                        "on-primary": "#5b005b",
+                        "inverse-primary": "#a900a9",
+                        "secondary-fixed-dim": "#dcb8ff",
+                        "inverse-on-surface": "#2d3037",
+                        "on-surface-variant": "#dcbed4",
+                        "tertiary-fixed": "#ffdcc3",
+                        "tertiary-container": "#db7800",
+                        "on-tertiary-container": "#452100",
+                        "outline-variant": "#564052",
+                        "surface-container": "#1d2026",
+                        "on-primary-fixed": "#380038",
+                        "surface-container-low": "#191c22",
+                        "on-error": "#690005",
+                        "background": "#101319",
+                        "secondary-fixed": "#efdbff",
+                        "surface-tint": "#ffabf3",
+                        "primary-fixed-dim": "#ffabf3",
+                        "tertiary-fixed-dim": "#ffb77d",
+                        "tertiary": "#ffb77d",
+                        "on-surface": "#e1e2ea",
+                        "on-error-container": "#ffdad6",
+                        "secondary": "#dcb8ff",
+                        "on-tertiary-fixed-variant": "#6e3900",
+                        "surface-dim": "#101319",
+                        "surface": "#101319",
+                        "on-tertiary": "#4d2600",
+                        "surface-container-lowest": "#0b0e14",
+                        "on-background": "#e1e2ea",
+                        "secondary-container": "#7701d0",
+                        "outline": "#a4899d",
+                        "surface-bright": "#363940",
+                        "on-tertiary-fixed": "#2f1500",
+                        "surface-variant": "#32353b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "grid-columns-desktop": "12",
+                        "section-gap": "32px",
+                        "grid-columns-mobile": "4",
+                        "container-margin": "20px",
+                        "stack-gap": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "title-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col pb-24">
+<!-- Top AppBar -->
+<header class="w-full top-0 sticky bg-background z-40">
+<div class="flex justify-between items-center px-container-margin py-4 w-full">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional studio headshot of a young man with a friendly expression, captured with cinematic soft lighting against a minimalist dark background. The image has a clean, high-end aesthetic with muted tones and sharp focus on the subject's features, aligning with a premium fintech app interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAv-an6wX1-vFn-1TTmgR3wWwfGcuTTwWo7pRmURW9XTh7s3SeZ-S7NyhnE5ymtuY8g81QBESUQ3xY5EN9VyGCRMiulVJNZBwHcebSVl5lGIW_wUvxS2UBoldJklaFwqoNzTe3XfUAW1-Ns1oWr8DeU6jXaJYHAqTNjTBe0Uptyae6PcRl06YxTDYDs1ApMh6DBJ3ueZZO6tz8HiLSMav-0Y_ntqt1leJ7T1GvGUwJCu0PznJr0jGEHZ1BF8vRgObuT-2BhwerIOyY"/>
+</div>
+<h1 class="font-title-md text-title-md text-primary">Welcome, Alex</h1>
+</div>
+<button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform" data-icon="settings">settings</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-container-margin flex flex-col gap-section-gap overflow-y-auto" id="main-canvas">
+<!-- Header Controls Section -->
+<section class="flex flex-col gap-4">
+<div class="flex justify-between items-end">
+<div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-on-surface">September 2023</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">4 Tasks pending today</p>
+</div>
+<div class="flex items-center gap-2 bg-surface-container rounded-full px-4 py-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Hide pending</span>
+<button aria-checked="false" class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none bg-surface-container-highest" id="toggle-pending" role="switch">
+<span aria-hidden="true" class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-outline-variant shadow ring-0 transition duration-200 ease-in-out translate-x-0" id="toggle-thumb"></span>
+</button>
+</div>
+</div>
+</section>
+<!-- Full Month Calendar View -->
+<section class="glass-card rounded-lg p-6">
+<div class="grid grid-cols-7 mb-4">
+<div class="text-center font-label-caps text-label-caps text-outline">MON</div>
+<div class="text-center font-label-caps text-label-caps text-outline">TUE</div>
+<div class="text-center font-label-caps text-label-caps text-outline">WED</div>
+<div class="text-center font-label-caps text-label-caps text-outline">THU</div>
+<div class="text-center font-label-caps text-label-caps text-outline">FRI</div>
+<div class="text-center font-label-caps text-label-caps text-outline">SAT</div>
+<div class="text-center font-label-caps text-label-caps text-outline">SUN</div>
+</div>
+<!-- Calendar Grid -->
+<div class="grid grid-cols-7 gap-y-8" id="calendar-grid">
+<!-- Row 0: Trailing month (August) -->
+<div class="flex flex-col items-center opacity-20"><span class="font-body-lg text-body-lg">28</span></div>
+<div class="flex flex-col items-center opacity-20"><span class="font-body-lg text-body-lg">29</span></div>
+<div class="flex flex-col items-center opacity-20"><span class="font-body-lg text-body-lg">30</span></div>
+<div class="flex flex-col items-center opacity-20"><span class="font-body-lg text-body-lg">31</span></div>
+<!-- September starts here -->
+<div class="flex flex-col items-center relative py-1">
+<span class="font-body-lg text-body-lg">1</span>
+<div class="flex gap-1 mt-1"><span class="text-[8px] font-medium text-primary truncate max-w-full px-0.5">Salary</span></div>
+</div>
+<div class="flex flex-col items-center relative py-1">
+<span class="font-body-lg text-body-lg">2</span>
+</div>
+<div class="flex flex-col items-center relative py-1">
+<span class="font-body-lg text-body-lg">3</span>
+<div class="flex gap-1 mt-1"><span class="text-[8px] font-medium text-outline-variant truncate max-w-full px-0.5 pending-indicator">Rent</span></div>
+</div>
+<!-- Row 2 -->
+<div class="flex flex-col items-center relative py-1">
+<span class="font-body-lg text-body-lg">4</span>
+<div class="flex gap-1 mt-1"><span class="text-[8px] font-medium text-primary truncate max-w-full px-0.5">Apple Store</span></div>
+</div>
+<div class="flex flex-col items-center relative py-1">
+<span class="font-body-lg text-body-lg">5</span>
+</div>
+<div class="flex flex-col items-center relative py-1">
+<span class="font-body-lg text-body-lg">6</span>
+<div class="flex gap-1 mt-1"><div class="flex flex-col items-center w-full gap-0.5"><span class="text-[8px] font-medium text-primary truncate max-w-full">Salary</span><span class="text-[8px] font-medium text-outline-variant truncate max-w-full pending-indicator">Rent</span></div></div>
+</div>
+<div class="flex flex-col items-center relative py-1">
+<span class="font-body-lg text-body-lg">7</span>
+</div>
+<div class="flex flex-col items-center relative py-1">
+<span class="font-body-lg text-body-lg">8</span>
+</div>
+<div class="flex flex-col items-center relative py-1 bg-primary-container/10 rounded-full">
+<span class="font-body-lg text-body-lg text-primary font-bold">9</span>
+<div class="flex gap-1 mt-1"><div class="flex flex-col items-center w-full gap-0.5"><span class="text-[8px] font-medium text-primary truncate max-w-full">Salary</span><span class="text-[8px] font-medium text-outline-variant truncate max-w-full pending-indicator">Netflix</span></div></div>
+</div>
+<div class="flex flex-col items-center relative py-1">
+<span class="font-body-lg text-body-lg">10</span>
+</div>
+<!-- Row 3 -->
+<div class="flex flex-col items-center relative py-1">
+<span class="font-body-lg text-body-lg">11</span>
+<div class="flex gap-1 mt-1"><span class="text-[8px] font-medium text-primary truncate max-w-full px-0.5">Salary</span></div>
+</div>
+<div class="flex flex-col items-center relative py-1">
+<span class="font-body-lg text-body-lg">12</span>
+<div class="flex gap-1 mt-1"><span class="text-[8px] font-medium text-primary truncate max-w-full px-0.5">Salary</span></div>
+</div>
+<div class="flex flex-col items-center relative py-1">
+<span class="font-body-lg text-body-lg">13</span>
+</div>
+<div class="flex flex-col items-center relative py-1">
+<span class="font-body-lg text-body-lg">14</span>
+</div>
+<div class="flex flex-col items-center relative py-1">
+<span class="font-body-lg text-body-lg">15</span>
+<div class="flex gap-1 mt-1"><span class="text-[8px] font-medium text-primary truncate max-w-full px-0.5">Salary</span></div>
+</div>
+<div class="flex flex-col items-center relative py-1">
+<span class="font-body-lg text-body-lg">16</span>
+</div>
+<div class="flex flex-col items-center relative py-1">
+<span class="font-body-lg text-body-lg">17</span>
+</div>
+<!-- Row 4 -->
+<div class="flex flex-col items-center relative py-1">
+<span class="font-body-lg text-body-lg">18</span>
+<div class="flex gap-1 mt-1"><span class="text-[8px] font-medium text-primary truncate max-w-full px-0.5">Netflix</span></div>
+</div>
+<div class="flex flex-col items-center relative py-1">
+<span class="font-body-lg text-body-lg">19</span>
+</div>
+<div class="flex flex-col items-center relative py-1">
+<span class="font-body-lg text-body-lg">20</span>
+</div>
+<div class="flex flex-col items-center relative py-1">
+<span class="font-body-lg text-body-lg">21</span>
+<div class="flex gap-1 mt-1"><span class="text-[8px] font-medium text-outline-variant truncate max-w-full px-0.5 pending-indicator">Rent</span></div>
+</div>
+<div class="flex flex-col items-center relative py-1">
+<span class="font-body-lg text-body-lg">22</span>
+</div>
+<div class="flex flex-col items-center relative py-1">
+<span class="font-body-lg text-body-lg">23</span>
+</div>
+<div class="flex flex-col items-center relative py-1">
+<span class="font-body-lg text-body-lg">24</span>
+</div>
+<!-- Row 5 -->
+<div class="flex flex-col items-center relative py-1">
+<span class="font-body-lg text-body-lg">25</span>
+</div>
+<div class="flex flex-col items-center relative py-1">
+<span class="font-body-lg text-body-lg">26</span>
+</div>
+<div class="flex flex-col items-center relative py-1">
+<span class="font-body-lg text-body-lg">27</span>
+</div>
+<div class="flex flex-col items-center relative py-1">
+<span class="font-body-lg text-body-lg">28</span>
+</div>
+<div class="flex flex-col items-center relative py-1">
+<span class="font-body-lg text-body-lg">29</span>
+</div>
+<div class="flex flex-col items-center relative py-1">
+<span class="font-body-lg text-body-lg">30</span>
+</div>
+<div class="flex flex-col items-center opacity-20"><span class="font-body-lg text-body-lg">1</span></div>
+</div>
+</section>
+<!-- Legend Section -->
+<section class="flex flex-col gap-stack-gap">
+<h3 class="font-label-caps text-label-caps text-outline">LEGEND</h3>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary neon-glow-primary"></div>
+<span class="font-body-sm text-body-sm text-on-surface">Completed</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-secondary neon-glow-secondary"></div>
+<span class="font-body-sm text-body-sm text-on-surface">Pending</span>
+</div>
+</div>
+</section>
+<!-- Quick Summary Card -->
+<section class="glass-card rounded-lg p-6 mb-8 border-l-4 border-primary">
+<div class="flex items-start justify-between">
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Today's Focus</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Rent due and Portfolio rebalance</p>
+</div>
+<div class="bg-primary/20 p-2 rounded-full">
+<span class="material-symbols-outlined text-primary" data-icon="rocket_launch">rocket_launch</span>
+</div>
+</div>
+<button class="mt-6 w-full py-3 bg-secondary-container text-on-secondary-container rounded-full font-label-caps text-label-caps hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                ADD NEW EVENT
+            </button>
+</section>
+</main>
+<!-- Bottom NavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-surface/80 dark:bg-surface/80 backdrop-blur-xl shadow-[0px_-20px_40px_rgba(0,0,0,0.4)] rounded-t-lg">
+<!-- Dashboard -->
+<a class="flex flex-col items-center justify-center text-outline-variant hover:text-primary-fixed transition-colors active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+</a>
+<!-- Payments -->
+<a class="flex flex-col items-center justify-center text-outline-variant hover:text-primary-fixed transition-colors active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="contactless_off">contactless_off</span>
+</a>
+<!-- Home -->
+<a class="flex flex-col items-center justify-center text-outline-variant hover:text-primary-fixed transition-colors active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+</a>
+<!-- History -->
+<a class="flex flex-col items-center justify-center text-outline-variant hover:text-primary-fixed transition-colors active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+</a>
+<!-- Calendar (Active) -->
+<a class="flex flex-col items-center justify-center text-primary relative after:content-[''] after:absolute after:-bottom-1 after:w-1 after:h-1 after:bg-primary after:rounded-full active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined active-icon" data-icon="calendar_today" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
+</a>
+</nav>
+<script>
+        const toggleBtn = document.getElementById('toggle-pending');
+        const toggleThumb = document.getElementById('toggle-thumb');
+        const mainCanvas = document.getElementById('main-canvas');
+        let isPendingHidden = false;
+
+        toggleBtn.addEventListener('click', () => {
+            isPendingHidden = !isPendingHidden;
+            
+            if (isPendingHidden) {
+                toggleThumb.classList.remove('translate-x-0');
+                toggleThumb.classList.add('translate-x-5');
+                toggleBtn.classList.replace('bg-surface-container-highest', 'bg-primary');
+                toggleThumb.classList.replace('bg-outline-variant', 'bg-on-primary');
+                mainCanvas.classList.add('hide-pending');
+            } else {
+                toggleThumb.classList.remove('translate-x-5');
+                toggleThumb.classList.add('translate-x-0');
+                toggleBtn.classList.replace('bg-primary', 'bg-surface-container-highest');
+                toggleThumb.classList.replace('bg-on-primary', 'bg-outline-variant');
+                mainCanvas.classList.remove('hide-pending');
+            }
+        });
+
+        // Simple atmospheric effect for modern feel
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            document.body.style.backgroundImage = `radial-gradient(circle at ${x * 100}% ${y * 100}%, rgba(255, 0, 255, 0.03) 0%, transparent 40%)`;
+        });
+    </script>
+</body></html>

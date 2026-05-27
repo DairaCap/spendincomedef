@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Categories - Finance Cockpit</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #05070A;
+            color: #e1e2ea;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .neon-gradient {
+            background: linear-gradient(135deg, #ff00ff 0%, #7701d0 100%);
+        }
+        .glass-card {
+            background: #1A1D23;
+            box-shadow: 0px 20px 40px rgba(0,0,0,0.4);
+        }
+        .progress-glow {
+            filter: drop-shadow(0 0 4px currentColor);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#6700b5",
+                        "surface-container-highest": "#32353b",
+                        "primary-container": "#ff00ff",
+                        "on-primary-fixed-variant": "#810081",
+                        "on-secondary-fixed": "#2c0051",
+                        "surface-container-high": "#272a30",
+                        "primary-fixed": "#ffd7f5",
+                        "primary": "#ffabf3",
+                        "on-secondary-container": "#dcb7ff",
+                        "on-secondary": "#480081",
+                        "error": "#ffb4ab",
+                        "error-container": "#93000a",
+                        "inverse-surface": "#e1e2ea",
+                        "on-primary-container": "#510051",
+                        "on-primary": "#5b005b",
+                        "inverse-primary": "#a900a9",
+                        "secondary-fixed-dim": "#dcb8ff",
+                        "inverse-on-surface": "#2d3037",
+                        "on-surface-variant": "#dcbed4",
+                        "tertiary-fixed": "#ffdcc3",
+                        "tertiary-container": "#db7800",
+                        "on-tertiary-container": "#452100",
+                        "outline-variant": "#564052",
+                        "surface-container": "#1d2026",
+                        "on-primary-fixed": "#380038",
+                        "surface-container-low": "#191c22",
+                        "on-error": "#690005",
+                        "background": "#101319",
+                        "secondary-fixed": "#efdbff",
+                        "surface-tint": "#ffabf3",
+                        "primary-fixed-dim": "#ffabf3",
+                        "tertiary-fixed-dim": "#ffb77d",
+                        "tertiary": "#ffb77d",
+                        "on-surface": "#e1e2ea",
+                        "on-error-container": "#ffdad6",
+                        "secondary": "#dcb8ff",
+                        "on-tertiary-fixed-variant": "#6e3900",
+                        "surface-dim": "#101319",
+                        "surface": "#101319",
+                        "on-tertiary": "#4d2600",
+                        "surface-container-lowest": "#0b0e14",
+                        "on-background": "#e1e2ea",
+                        "secondary-container": "#7701d0",
+                        "outline": "#a4899d",
+                        "surface-bright": "#363940",
+                        "on-tertiary-fixed": "#2f1500",
+                        "surface-variant": "#32353b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "grid-columns-desktop": "12",
+                        "section-gap": "32px",
+                        "grid-columns-mobile": "4",
+                        "container-margin": "20px",
+                        "stack-gap": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "title-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background min-h-screen flex flex-col">
+<!-- Top App Bar -->
+<header class="w-full top-0 sticky z-40 bg-background flex justify-between items-center px-container-margin py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional close-up portrait of a young male executive with a confident expression, set against a dark, blurred architectural background. The lighting is dramatic and cool-toned, aligning with a high-end financial application's aesthetic. The color palette consists of deep charcoals and sharp highlights, emphasizing a sophisticated and modern digital cockpit atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKNWx_ZF1PebEGSK3AzU5dVZLRwLlkVYjJ41p75kC-skSHCWssyvlvgHk8isY_XfN9efZoGu_vhiClOFREWt_O_TUzZ7Ii16URxZXNKFKjYq8tBh-pQY4lTphvWEXEzblCeb2px5ALlO51eU9cqhLU4pW0cR3NuZhZy1NGJm-wSuW1iOPqvIwlE7vEEjFJx8-KmBvxbcigfrmrVwDHF_DALBZ0UyolabLH11a1U2C_j33Kz1T5woHT1bsoN_KmtsrfuNlPEpzAtHc"/>
+</div>
+<h1 class="font-title-md text-title-md text-primary">Welcome, Alex</h1>
+</div>
+<button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform tap-highlight-none" data-icon="settings">settings</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-container-margin pb-32">
+<section class="mt-4">
+<div class="flex justify-between items-end mb-6">
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Overview</span>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Categories</h2>
+</div>
+<p class="font-body-sm text-body-sm text-primary">12 Active</p>
+</div>
+<!-- Category Grid -->
+<div class="grid grid-cols-2 gap-stack-gap">
+<!-- Category Card: Housing -->
+<div class="glass-card p-5 rounded-lg flex flex-col gap-4 active:scale-95 transition-all duration-200 cursor-pointer group">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-[20px]" data-icon="edit">edit</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Housing</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">$1,200 / $1,500</p>
+</div>
+<div class="w-full h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary progress-glow" style="width: 80%"></div>
+</div>
+</div>
+<!-- Category Card: Car -->
+<div class="glass-card p-5 rounded-lg flex flex-col gap-4 active:scale-95 transition-all duration-200 cursor-pointer">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-full bg-secondary-container/20 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="directions_car">directions_car</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-[20px]" data-icon="edit">edit</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Car</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">$450 / $500</p>
+</div>
+<div class="w-full h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary progress-glow" style="width: 90%"></div>
+</div>
+</div>
+<!-- Category Card: Groceries -->
+<div class="glass-card p-5 rounded-lg flex flex-col gap-4 active:scale-95 transition-all duration-200 cursor-pointer">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-full bg-tertiary-container/20 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" data-icon="shopping_basket">shopping_basket</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-[20px]" data-icon="edit">edit</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Groceries</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">$320 / $600</p>
+</div>
+<div class="w-full h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-tertiary progress-glow" style="width: 53%"></div>
+</div>
+</div>
+<!-- Category Card: Entertainment -->
+<div class="glass-card p-5 rounded-lg flex flex-col gap-4 active:scale-95 transition-all duration-200 cursor-pointer">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-full bg-error-container/20 flex items-center justify-center text-error">
+<span class="material-symbols-outlined" data-icon="movie">movie</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-[20px]" data-icon="edit">edit</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Cinema</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">$150 / $100</p>
+</div>
+<div class="w-full h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-error progress-glow" style="width: 100%"></div>
+</div>
+</div>
+<!-- Category Card: Fitness -->
+<div class="glass-card p-5 rounded-lg flex flex-col gap-4 active:scale-95 transition-all duration-200 cursor-pointer">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="fitness_center">fitness_center</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-[20px]" data-icon="edit">edit</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Fitness</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">$85 / $120</p>
+</div>
+<div class="w-full h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary progress-glow" style="width: 70%"></div>
+</div>
+</div>
+<!-- Category Card: Subscriptions -->
+<div class="glass-card p-5 rounded-lg flex flex-col gap-4 active:scale-95 transition-all duration-200 cursor-pointer">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-full bg-secondary-container/20 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="subscriptions">subscriptions</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-[20px]" data-icon="edit">edit</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Subs</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">$45 / $50</p>
+</div>
+<div class="w-full h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary progress-glow" style="width: 90%"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="mt-section-gap mb-10">
+<button class="neon-gradient w-full py-5 rounded-lg flex items-center justify-center gap-3 active:scale-95 transition-all shadow-[0_0_30px_rgba(255,0,255,0.3)]">
+<span class="material-symbols-outlined text-on-primary" data-icon="add">add</span>
+<span class="font-title-md text-title-md text-on-primary font-bold">Add new category</span>
+</button>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-surface/80 backdrop-blur-xl shadow-[0px_-20px_40px_rgba(0,0,0,0.4)] rounded-t-lg">
+<!-- Tab: View (Inactive) -->
+<button class="flex flex-col items-center justify-center text-outline-variant hover:text-primary-fixed transition-colors active:scale-90 transition-all duration-200 tap-highlight-none">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+</button>
+<!-- Tab: Cards (Inactive) -->
+<button class="flex flex-col items-center justify-center text-outline-variant hover:text-primary-fixed transition-colors active:scale-90 transition-all duration-200 tap-highlight-none">
+<span class="material-symbols-outlined" data-icon="contactless_off">contactless_off</span>
+</button>
+<!-- Tab: Categories (Active) -->
+<button class="flex flex-col items-center justify-center text-primary relative after:content-[''] after:absolute after:-bottom-1 after:w-1 after:h-1 after:bg-primary after:rounded-full tap-highlight-none">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+</button>
+<!-- Tab: Receipts (Inactive) -->
+<button class="flex flex-col items-center justify-center text-outline-variant hover:text-primary-fixed transition-colors active:scale-90 transition-all duration-200 tap-highlight-none">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+</button>
+<!-- Tab: Calendar (Inactive) -->
+<button class="flex flex-col items-center justify-center text-outline-variant hover:text-primary-fixed transition-colors active:scale-90 transition-all duration-200 tap-highlight-none">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+</button>
+</nav>
+<script>
+        // Simple micro-interaction for cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('click', () => {
+                // Future interaction logic: Open edit modal
+                console.log('Category clicked');
+            });
+        });
+
+        // Pulsing effect for the FAB
+        const cta = document.querySelector('.neon-gradient');
+        if(cta) {
+            setInterval(() => {
+                cta.classList.add('brightness-110');
+                setTimeout(() => cta.classList.remove('brightness-110'), 150);
+            }, 3000);
+        }
+    </script>
+</body></html>

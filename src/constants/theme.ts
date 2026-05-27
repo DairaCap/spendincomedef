@@ -1,65 +1,95 @@
-/**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
- */
+// =========================================================================
+// Aura Finance — Typography & Spacing Theme
+// =========================================================================
 
-import '@/global.css';
-
-import { Platform } from 'react-native';
-
-export const Colors = {
-  light: {
-    text: '#000000',
-    background: '#ffffff',
-    backgroundElement: '#F0F0F3',
-    backgroundSelected: '#E0E1E6',
-    textSecondary: '#60646C',
+export const Typography = {
+  displayLg: {
+    fontSize: 40,
+    lineHeight: 48,
+    fontWeight: '700' as const,
+    letterSpacing: -0.8,
+    fontFamily: 'Inter_700Bold',
   },
-  dark: {
-    text: '#ffffff',
-    background: '#000000',
-    backgroundElement: '#212225',
-    backgroundSelected: '#2E3135',
-    textSecondary: '#B0B4BA',
+  headlineLg: {
+    fontSize: 32,
+    lineHeight: 40,
+    fontWeight: '600' as const,
+    letterSpacing: -0.32,
+    fontFamily: 'Inter_600SemiBold',
   },
-} as const;
-
-export type ThemeColor = keyof typeof Colors.light & keyof typeof Colors.dark;
-
-export const Fonts = Platform.select({
-  ios: {
-    /** iOS `UIFontDescriptorSystemDesignDefault` */
-    sans: 'system-ui',
-    /** iOS `UIFontDescriptorSystemDesignSerif` */
-    serif: 'ui-serif',
-    /** iOS `UIFontDescriptorSystemDesignRounded` */
-    rounded: 'ui-rounded',
-    /** iOS `UIFontDescriptorSystemDesignMonospaced` */
-    mono: 'ui-monospace',
+  headlineLgMobile: {
+    fontSize: 24,
+    lineHeight: 32,
+    fontWeight: '600' as const,
+    fontFamily: 'Inter_600SemiBold',
   },
-  default: {
-    sans: 'normal',
-    serif: 'serif',
-    rounded: 'normal',
-    mono: 'monospace',
+  titleMd: {
+    fontSize: 20,
+    lineHeight: 28,
+    fontWeight: '500' as const,
+    fontFamily: 'Inter_500Medium',
   },
-  web: {
-    sans: 'var(--font-display)',
-    serif: 'var(--font-serif)',
-    rounded: 'var(--font-rounded)',
-    mono: 'var(--font-mono)',
+  bodyLg: {
+    fontSize: 16,
+    lineHeight: 24,
+    fontWeight: '400' as const,
+    fontFamily: 'Inter_400Regular',
   },
-});
+  bodySm: {
+    fontSize: 14,
+    lineHeight: 20,
+    fontWeight: '400' as const,
+    fontFamily: 'Inter_400Regular',
+  },
+  labelCaps: {
+    fontSize: 12,
+    lineHeight: 16,
+    fontWeight: '600' as const,
+    letterSpacing: 0.6,
+    fontFamily: 'Inter_600SemiBold',
+    textTransform: 'uppercase' as const,
+  },
+};
 
 export const Spacing = {
-  half: 2,
-  one: 4,
-  two: 8,
-  three: 16,
-  four: 24,
-  five: 32,
-  six: 64,
-} as const;
+  one:   4,
+  two:   8,
+  three: 12,
+  four:  16,
+  five:  20,
+  six:   24,
+  eight: 32,
+  containerMargin: 20,
+  stackGap:        16,
+  sectionGap:      32,
+};
 
-export const BottomTabInset = Platform.select({ ios: 50, android: 80 }) ?? 0;
-export const MaxContentWidth = 800;
+export const Radius = {
+  sm:   8,
+  DEFAULT: 16,
+  md:   24,
+  lg:   32,
+  xl:   48,
+  full: 9999,
+};
+
+export const Shadows = {
+  card: {
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 20 },
+    shadowOpacity: 0.4,
+    shadowRadius: 20,
+    elevation: 12,
+  },
+  neon: {
+    shadowColor: '#ff00ff',
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.3,
+    shadowRadius: 20,
+    elevation: 8,
+  },
+};
+
+// Legacy exports kept for backward-compatibility with existing code
+export const MaxContentWidth = 640;
+export const BottomTabInset  = 80;
